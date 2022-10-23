@@ -2,9 +2,15 @@ html
     head 
         title=pageTitle 
     body 
-        h1='WELCOME'
-        button(type="submit")
-            a(href='/login')='login'
-        button(type="submit")
-            a(href='/register')='register'
-        
+        if name !== undefined
+            h1=`WELCOME ${name.username}`
+            button(type="submit")
+                a(href='/logout')='logout'
+            
+        else 
+            h1="WELCOM"
+            button(type="submit")
+                a(href='/login')='login'
+            button(type="submit")
+                a(href='/register')='register'
+            

@@ -3,6 +3,8 @@ html
         title=pageTitle 
     body 
         h1='LOGIN'
+        //- if message.error
+        //-     h2=message.error
         form(action='/login', method='post')
             label(for='username') username
             input#username(type='text', name='username', placeholder='username')
