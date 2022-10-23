@@ -1,0 +1,15 @@
+html 
+    head 
+        title=pageTitle 
+    body 
+        h1='LOGIN'
+        form(action='/login', method='post')
+            label(for='username') username
+            input#username(type='text', name='username', placeholder='username')
+            label(for='password') password
+            input#password(type='password', name='password')
+            input(type="submit")
+        button(type="submit")
+            a(href='/')='home'
+        button(type="submit")
+            a(href='/register')='register'

@@ -1,0 +1,17 @@
+html 
+    head 
+        title=pageTitle 
+    body 
+        h1='REGISTER'
+        form(action='/register', method='post')
+            label(for='username') username
+            input#username(type='text', name='username', placeholder='username')
+            label(for='password') password
+            input#password(type='password', name='password')
+            label(for='conf-password') rapate password
+            input#password(type='password', name='conf-password')
+            input(type="submit")
+        button(type="submit")
+            a(href='/login')='login'
+        button(type="submit")
+            a(href='/')='home'        
