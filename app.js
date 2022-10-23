@@ -1,7 +1,10 @@
 const express = require('express');
 const session = require('express-session');
+const bcrypt = require('bcrypt');
 
 const app = express();
+
+const users = [];
 
 // meddeware
 app.use(express.json());
@@ -21,6 +24,7 @@ app.use(
 // set view engin
 app.set('view engine', 'pug');
 
+// render page
 app.get('/', (req, res) => {
   res.render('home.pug', { pageTitle: 'home' });
 });
@@ -33,7 +37,20 @@ app.get('/register', (req, res) => {
   res.render('register.pug', { pageTitle: 'register page' });
 });
 
-app.post('/register', (req, res) => {});
+// post routes
+app.post('/register', async (req, res) => {
+  try {
+    const hashedPass = await bcrypt.hash(req.body.password, 7);
+    users.push({
+      id: users.length + 1,
+      username: req.body.username,
+      password: hashedPass,
+    });
+    res.redirect('/login');
+  } catch {
+    res.redirect('/register');
+  }
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`server run on ${port}`));
